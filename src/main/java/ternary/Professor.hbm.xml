@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ternary">
+    <class name="Professor" table="PROFESSORS">
+        <meta attribute="class-description">
+            This class contains professor details.
+        </meta>
+        <id name="profId" column="ProfId" type="int" access="field"/>
+        <property name="name" column="Name" type="string"/>
+        <property name="admission" column="Admission"/>
+        <property name="researchArea" column="ResearchArea" type="string"/>
+        <map name="classMap" table="CLASSES">
+        	<key column="ProfId"/>
+        	<map-key-many-to-many column="StudentId" class="Student"/>
+        	<many-to-many column="DiscId" class="Discipline"/>
+        </map>
+    </class>
+</hibernate-mapping>

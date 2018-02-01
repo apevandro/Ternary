@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="best.practice">
+    <class name="UniClass" table="CLASSES" mutable="false">
+    	<meta attribute="class-description">
+    		ternary mapping.
+    		table with additional columns as intermediate entity class.
+    	</meta>
+    	<id name="id" column="Id" type="int" access="field" />
+        <many-to-one name="student" column="StudentId" class="Student" />
+    	<many-to-one name="discipline" column="DiscId" class="Discipline" />
+    	<many-to-one name="professor" column="ProfId" class="Professor" />
+    	<property name="semester" column="Semester" type="string" />
+    	<property name="grade" column="Grade" type="double" not-null="true" />
+    </class>
+</hibernate-mapping>
